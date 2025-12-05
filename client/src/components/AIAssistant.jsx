@@ -33,7 +33,9 @@ const AIAssistant = () => {
             const { data } = await chatWithAI(currentInput, context);
             setMessages(prev => [...prev, { role: 'model', text: data.reply }]);
         } catch (error) {
-            setMessages(prev => [...prev, { role: 'model', text: 'Sorry, I encountered an error. Please try again.' }]);
+            console.error('AI Chat Error:', error);
+            const errorMessage = error.response?.data?.error || error.message || 'Unknown error';
+            setMessages(prev => [...prev, { role: 'model', text: `Sorry, I encountered an error: ${errorMessage}. Please try again.` }]);
         } finally {
             setLoading(false);
         }
@@ -122,7 +124,7 @@ const AIAssistant = () => {
                             onKeyPress={(e) => e.key === 'Enter' && handleSend()}
                             disabled={loading}
                         />
-                        <IconButton color="primary" onClick={handleSend} disabled={loading || !input.trim()}>
+                        <IconButton color="primary" onClick={() => handleSend()} disabled={loading || !input.trim()}>
                             <Send size={20} />
                         </IconButton>
                     </Box>

@@ -57,8 +57,8 @@ const getFallbackSchedule = (tasks) => {
 };
 
 exports.chat = async (req, res) => {
+    const { message, context } = req.body;
     try {
-        const { message, context } = req.body;
         console.log('Received AI chat message:', message, 'Context:', context);
 
         if (!process.env.GEMINI_API_KEY) {
@@ -66,7 +66,7 @@ exports.chat = async (req, res) => {
             return res.json({ reply: getFallbackChatResponse(message, context) });
         }
 
-        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+        const model = genAI.getGenerativeModel({ model: "gemini-flash-latest" });
 
         let systemInstruction = "You are Vishubh, an AI productivity assistant. You help users with task management, motivation, and scheduling. Be concise, encouraging, and practical.";
         if (context === 'breakdown') systemInstruction += " The user wants to break down a complex task. Provide a step-by-step checklist.";
@@ -134,7 +134,7 @@ exports.generateSchedule = async (req, res) => {
             - "type": "Work" | "Break" | "Routine"
         `;
 
-        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+        const model = genAI.getGenerativeModel({ model: "gemini-flash-latest" });
         const result = await model.generateContent(prompt);
         const response = await result.response;
         let text = response.text();
