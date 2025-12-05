@@ -11,7 +11,7 @@
 ### *An AI-Powered, Emotion-Aware Productivity & Scheduling Web Application*
 
 <p align="center">
-  <img width="100%" src="https://github.com/user-attachments/assets/3efcd384-1871-4ab5-bb8b-bfeaad21db2a" alt="Vishubh UI Preview"/>
+  <img width="1891" height="824" alt="image" src="https://github.com/user-attachments/assets/17d678bc-50ba-470d-a996-233af08b8537" />
 </p>
 
 ---
