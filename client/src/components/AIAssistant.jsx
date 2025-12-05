@@ -42,14 +42,14 @@ const AIAssistant = () => {
     };
 
     return (
-        <Box sx={{ position: 'fixed', bottom: 5, right: 5, zIndex: 1000, display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+        <Box sx={{ position: 'fixed', bottom: 5, right: 5, zIndex: 9999, display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
             <Collapse in={isOpen}>
                 <Paper
                     elevation={6}
                     sx={{
-                        width: 350,
-                        height: 500,
-                        mb: 2,
+                        width: 320,
+                        height: 400,
+                        mb: 1,
                         display: 'flex',
                         flexDirection: 'column',
                         overflow: 'hidden',
